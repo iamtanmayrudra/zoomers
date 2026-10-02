@@ -353,3 +353,27 @@ excludes the lens's own DOM subtree from the clone to avoid this — no action
 needed. If you see stale/duplicated content elsewhere, check for other
 elements marked `data-zoom-magnifier-ignore` that may be unintentionally
 nested.
+
+## Publishing (maintainers)
+
+This package isn't published to npm yet. Once you're ready:
+
+```bash
+cd packages/react-zoom-magnifier
+npm login          # one-time, needs an npmjs.com account
+npm publish        # runs the test suite + build first (prepublishOnly)
+```
+
+Before publishing, double-check:
+
+- `npm pack --dry-run` — the tarball should contain only `LICENSE`,
+  `README.md`, `package.json`, and `dist/*` (no `src/`, tests, or
+  `node_modules`).
+- The version in `package.json` has been bumped (`npm version patch|minor|major`
+  creates the bump + a matching git tag).
+- The name `react-zoom-magnifier` is still unclaimed, or update `name` to
+  whatever you're actually publishing under (`npm view <name>` returns 404 if
+  it's free).
+
+`publishConfig.access` is already set to `"public"` so a first publish works
+even if the name were ever scoped (e.g. `@you/react-zoom-magnifier`).
