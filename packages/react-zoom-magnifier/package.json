@@ -2,6 +2,27 @@
   "name": "react-zoom-magnifier",
   "version": "0.1.0",
   "description": "An application-level magnifier / zoom lens for React and Next.js",
+  "keywords": [
+    "react",
+    "nextjs",
+    "zoom",
+    "magnifier",
+    "magnify",
+    "lens",
+    "image-zoom",
+    "accessibility"
+  ],
+  "homepage": "https://github.com/iamtanmayrudra/zoomers/tree/main/packages/react-zoom-magnifier#readme",
+  "bugs": {
+    "url": "https://github.com/iamtanmayrudra/zoomers/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iamtanmayrudra/zoomers.git",
+    "directory": "packages/react-zoom-magnifier"
+  },
+  "license": "MIT",
+  "author": "iamtanmayrudra",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -14,14 +35,23 @@
     },
     "./styles.css": "./dist/zoom.css"
   },
+  "sideEffects": false,
   "files": [
-    "dist"
+    "dist",
+    "LICENSE"
   ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsup && node -e \"require('fs').copyFileSync('src/styles/zoom.css','dist/zoom.css')\"",
     "dev": "tsup --watch",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run test && npm run build"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
