@@ -4,10 +4,9 @@ An application-level magnifier / zoom lens for React and Next.js. Click a Zoom
 button, move your pointer anywhere in the app, and a lens follows the cursor
 magnifying whatever is underneath it — text, images, forms, charts, tables.
 
-> **Status:** early (Milestone 1 of the [master plan](../../react-nextjs-zoom-magnifier-master-plan.md)).
-> The core magnifier and React API are implemented and manually verified in the
-> bundled demo app. See [Limitations](#limitations) before relying on this in
-> production.
+> **Status:** early (Milestone 1). The core magnifier and React API are
+> implemented and manually verified in the bundled demo apps. See
+> [Limitations](#limitations) before relying on this in production.
 
 ## Features
 
@@ -236,7 +235,7 @@ defaults above.
 
 ## Zoom Levels
 
-Recommended defaults, matching the master plan:
+Recommended defaults:
 
 ```
 1.5x  2x  2.5x  3x  4x
@@ -297,8 +296,7 @@ lens doesn't go stale for moderately dynamic content.
 
 This was chosen over a canvas/screenshot-based renderer because it preserves
 real text rendering, form elements, and accessibility semantics inside the
-lens — see the master plan's [Rendering Strategy](../../react-nextjs-zoom-magnifier-master-plan.md#11-rendering-strategy)
-section for the full comparison.
+lens.
 
 ## Browser Support
 
@@ -310,9 +308,8 @@ transforms — all broadly supported. No IE11 support.
 
 - **Not yet built:** Pages Router verification, a full
   unit/integration/E2E/visual-regression/accessibility test suite, CI/CD, and
-  keyboard shortcuts / advanced persistence are all still on the roadmap (see
-  the master plan's Phase list). App Router (dev + production build) is
-  verified — see [Next.js Setup](#nextjs-setup).
+  keyboard shortcuts / advanced persistence are all still on the roadmap. App
+  Router (dev + production build) is verified — see [Next.js Setup](#nextjs-setup).
 - Content inside `<iframe>`, `<canvas>`, and `<video>` does not clone
   meaningfully — the lens will show it blank or frozen.
 - Cross-origin images may fail to repaint inside the cloned lens content due

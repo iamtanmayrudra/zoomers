@@ -1,8 +1,7 @@
 # zoomer
 
 Monorepo for **react-zoom-magnifier** — an application-level magnifier / zoom
-lens for React and Next.js. Built from the plan in
-[`react-nextjs-zoom-magnifier-master-plan.md`](react-nextjs-zoom-magnifier-master-plan.md).
+lens for React and Next.js.
 
 ```
 zoomer/
@@ -29,13 +28,12 @@ limitations, and troubleshooting.
 
 ## Status
 
-Milestone 1 of the master plan: core zoom engine, pointer tracking, the
-DOM-clone lens renderer, the full React API, and a screenshot-capture feature
-are implemented and manually verified against both demo apps. Next.js App
-Router support is confirmed working in both `next dev` and a production
-`next build`/`next start` (a Server Component root layout rendering the
-client `ZoomProvider`/`ZoomLens` boundary around a plain Server Component
-page, with no hydration errors). Pages Router verification, full automated
-test suites (integration/E2E/visual regression/accessibility), documentation
-polish, and CI/CD are still ahead — see the master plan's Phase list and the
-package README's Limitations section.
+Milestone 1: core zoom engine, pointer tracking, the DOM-clone lens renderer,
+the full React API, and a screenshot-capture feature are implemented and
+manually verified against both demo apps. Next.js App Router support is
+confirmed working in both `next dev` and a production `next build`/`next
+start` (a Server Component root layout rendering the client
+`ZoomProvider`/`ZoomLens` boundary around a plain Server Component page, with
+no hydration errors). Pages Router verification, full automated test suites
+(integration/E2E/visual regression/accessibility), documentation polish, and
+CI/CD are still ahead — see the package README's Limitations section.
