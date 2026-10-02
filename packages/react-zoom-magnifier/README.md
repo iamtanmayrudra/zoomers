@@ -98,11 +98,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 ```
 
-> **Not yet verified:** a dedicated Next.js example app and SSR/hydration
-> testing are planned but not done yet (see Limitations). The package avoids
-> touching `window`/`document` outside effects and event handlers, which is
-> the main SSR hazard, but App Router/Pages Router integration hasn't been
-> exercised end-to-end.
+> **Verified:** this exact pattern is exercised end-to-end in
+> [`examples/nextjs`](../../examples/nextjs) — a Server Component root layout
+> renders the client `ZoomProvider`/`ZoomLens` boundary around a plain
+> (non-"use client") Server Component page, using `next/image`. Confirmed
+> working in both `next dev` and a production `next build` + `next start`
+> (static prerendering, no hydration warnings, no console errors). Pages
+> Router has not been tested yet.
+>
+> Each component ships marked `"use client"`; because `tsup`/esbuild bundles
+> the whole package into a single file, that directive has to be re-added as a
+> build **banner** (see `tsup.config.ts`) rather than relying on the per-file
+> source markers, which get dropped during bundling. If you fork this package,
+> keep that banner — without it, Next.js will fail client/server boundary
+> checks on anything using `useState`/`useEffect` (i.e. everything here).
 
 ## API Reference
 
@@ -299,10 +308,11 @@ transforms — all broadly supported. No IE11 support.
 
 ## Limitations
 
-- **Not yet built:** a dedicated Next.js example/SSR verification, a full
+- **Not yet built:** Pages Router verification, a full
   unit/integration/E2E/visual-regression/accessibility test suite, CI/CD, and
   keyboard shortcuts / advanced persistence are all still on the roadmap (see
-  the master plan's Phase list).
+  the master plan's Phase list). App Router (dev + production build) is
+  verified — see [Next.js Setup](#nextjs-setup).
 - Content inside `<iframe>`, `<canvas>`, and `<video>` does not clone
   meaningfully — the lens will show it blank or frozen.
 - Cross-origin images may fail to repaint inside the cloned lens content due
@@ -316,13 +326,16 @@ transforms — all broadly supported. No IE11 support.
 
 ## Examples
 
-See [`examples/react`](../../examples/react) in this repository for a runnable
-demo (dashboard-style content: header, sidebar, cards, a form, a table, an
-image, and an SVG chart) you can use to sanity-check the lens.
+- [`examples/react`](../../examples/react) — a Vite + React demo (dashboard
+  content: header, sidebar, cards, a form, a table, an image, an SVG chart).
+- [`examples/nextjs`](../../examples/nextjs) — the same idea on Next.js App
+  Router, with a Server Component root layout and a plain Server Component
+  page nested inside the client `ZoomProvider`/`ZoomLens` boundary.
 
 ```bash
 npm install
 npm run dev:react-example
+npm run dev:nextjs-example
 ```
 
 ## Troubleshooting

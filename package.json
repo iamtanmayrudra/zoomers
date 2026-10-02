@@ -9,7 +9,8 @@
   "scripts": {
     "build": "npm run build --workspace=react-zoom-magnifier",
     "test": "npm run test --workspace=react-zoom-magnifier",
-    "dev:react-example": "npm run dev --workspace=examples-react"
+    "dev:react-example": "npm run dev --workspace=examples-react",
+    "dev:nextjs-example": "npm run dev --workspace=examples-nextjs"
   },
   "devDependencies": {
     "typescript": "^5.6.3"
