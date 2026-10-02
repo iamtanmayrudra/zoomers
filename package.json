@@ -1,0 +1,17 @@
+{
+  "name": "react-zoom-magnifier-workspace",
+  "private": true,
+  "version": "0.0.0",
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=react-zoom-magnifier",
+    "test": "npm run test --workspace=react-zoom-magnifier",
+    "dev:react-example": "npm run dev --workspace=examples-react"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}
